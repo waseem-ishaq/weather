@@ -23,7 +23,7 @@
       <div>
         <div class="d-flex">
           <div>
-            <h1>{{ this.city }},</h1>
+            <h1>{{ this.city1 }},</h1>
           </div>
           <div>
             <h1>{{ this.country }}</h1>
@@ -48,6 +48,7 @@ export default {
 
   data() {
     return {
+      city1:"",
       city: "",
       country: "",
       wCondition: "",
@@ -64,6 +65,7 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
+          this.city1=data.name;
           this.country = data.sys.country;
           this.wCondition = data.weather[0].description;
           this.tem = data.main.temp;
@@ -86,7 +88,7 @@ export default {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        this.city=data.name;
+        this.city1=data.name;
         this.country = data.sys.country;
         this.wCondition = data.weather[0].description;
         this.tem = Math.round(data.main.temp - 373);
